@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Simple Todo App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TodoScreen(),
+    );
+  }
+}
+
+class TodoScreen extends StatefulWidget {
+  @override
+  _TodoScreenState createState() => _TodoScreenState();
+}
+
+class _TodoScreenState extends State<TodoScreen> {
+  List<String> todos = [];
+  TextEditingController todoController = TextEditingController();
+
+  void addTodo() {
+    setState(() {
+      todos.add(todoController.text);
+      todoController.clear();
+    });
+  }
+
+  void removeTodo(int index) {
+    setState(() {
+      todos.removeAt(index);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Simple Todo App'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: todoController,
+              decoration: InputDecoration(
+                labelText: 'Add Todo',
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: addTodo,
+            child: Text('Add'),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: todos.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(todos[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () => removeTodo(index),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
