@@ -1,0 +1,17 @@
+Penjelasan Fitur-fitur:
+
+Menambahkan Tugas:
+Pengguna dapat memasukkan tugas baru ke dalam TextField dengan menggunakan TextEditingController.
+Saat tombol "Add" ditekan, fungsi addTodo dipanggil.
+Fungsi addTodo akan menambahkan tugas baru ke dalam daftar todos, membersihkan TextField, dan memperbarui antarmuka pengguna dengan memanggil setState.
+
+Menghapus Tugas:
+Setiap tugas ditampilkan dalam ListView.builder.
+Setiap tugas memiliki tombol hapus dengan ikon "delete" (IconButton) di sebelah kanan (trailing) dalam ListTile.
+Saat tombol hapus ditekan, fungsi removeTodo dipanggil dengan mengirimkan indeks tugas yang akan dihapus.
+Fungsi removeTodo akan menghapus tugas dari daftar todos berdasarkan indeks yang diterima dan memperbarui antarmuka pengguna dengan memanggil setState.
+
+State Management:
+State management diimplementasikan menggunakan setState.
+Setiap kali ada perubahan pada data tugas (todos), seperti penambahan atau penghapusan tugas, setState dipanggil untuk memperbarui tampilan aplikasi.
+Dengan memanggil setState, Flutter akan melakukan rebuild pada bagian antarmuka pengguna yang terpengaruh oleh perubahan tersebut.
